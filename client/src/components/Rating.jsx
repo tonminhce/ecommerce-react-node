@@ -1,33 +1,21 @@
-import React from 'react';
-import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
-import { CiStar } from 'react-icons/ci';
+import React from "react";
+import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { CiStar } from "react-icons/ci";
 
-const Rating = ({ratings}) => {
-    return (
-        <>
-        {
-            ratings >= 1 ? <span className='text-[#EDBB0E]'><FaStar/></span> :
-            ratings >= .5 ? <span className='text-[#EDBB0E]'><FaStarHalfAlt/></span> : <span className='text-slate-600'><CiStar/></span>
-        }
-        {
-            ratings >= 2 ? <span className='text-[#EDBB0E]'><FaStar/></span> :
-            ratings >= 1.5 ? <span className='text-[#EDBB0E]'><FaStarHalfAlt/></span> : <span className='text-slate-600'><CiStar/></span>
-        }
-        {
-            ratings >= 3 ? <span className='text-[#EDBB0E]'><FaStar/></span> :
-            ratings >= 2.5 ? <span className='text-[#EDBB0E]'><FaStarHalfAlt/></span> : <span className='text-slate-600'><CiStar/></span>
-        }
-        {
-            ratings >= 4 ? <span className='text-[#EDBB0E]'><FaStar/></span> :
-            ratings >= 3.5 ? <span className='text-[#EDBB0E]'><FaStarHalfAlt/></span> : <span className='text-slate-600'><CiStar/></span>
-        }
-        {
-            ratings >= 5 ? <span className='text-[#EDBB0E]'><FaStar/></span> :
-            ratings >= 4.5 ? <span className='text-[#EDBB0E]'><FaStarHalfAlt/></span> : <span className='text-slate-600'><CiStar/></span>
-        }
-            
-        </>
-    );
+const Rating = ({ ratings }) => {
+  const stars = Array(5)
+    .fill(0)
+    .map((_, index) => {
+      const starValue = index + 1;
+      if (ratings >= starValue) {
+        return <FaStar key={index} className="text-[#EDBB0E]" />;
+      } else if (ratings >= starValue - 0.5) {
+        return <FaStarHalfAlt key={index} className="text-[#EDBB0E]" />;
+      } else {
+        return <CiStar key={index} className="text-slate-600" />;
+      }
+    });
+  return <>{stars}</>;
 };
 
 export default Rating;

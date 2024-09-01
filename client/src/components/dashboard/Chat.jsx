@@ -22,7 +22,7 @@ const Chat = () => {
     const [receverMessage, setReceverMessage] = useState('');
     const [activeSeller, setActiveSeller] = useState([]);
     const [show, setShow] = useState(false);
-
+    console.log(useSelector(state =>state));
     useEffect(() => {
         socket.emit('add_user', userInfo.id, userInfo);
     }, [userInfo.id]);
@@ -80,10 +80,8 @@ const Chat = () => {
 
     const getSellerInfo = (sellerId) => {
         const seller = activeSeller.find(s => s.sellerId === sellerId);
-        console.log("seller", seller);
         return seller ? seller.userInfo : null;
     };
-    console.log("myfriend",my_friends);
 
     return (
         <div className='bg-white p-3 rounded-md'>
