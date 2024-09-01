@@ -94,21 +94,18 @@ const Login = () => {
               )}
             </button>
 
-            <div className="flex items-center mb-3 gap-3 justify-center">
-              <p>
-                Don't Have an account ?{" "}
-                <Link className="font-bold" to="/register">
-                  Sign Up
-                </Link>{" "}
-              </p>
-            </div>
-
-
-          </form>
+        <div className='flex items-center mb-3 gap-3 justify-center'>
+            <p>Don't Have an account ? <Link className='font-bold' to="/register">Sign Up</Link> </p> 
         </div>
-      </div>
-    </div>
-  );
+
+
+    </form>
+ 
+            </div>
+            </div>  
+            
+        </div>
+    );
 };
 
 export default Login;
