@@ -30,7 +30,7 @@ const SellerRequest = () => {
             
       <h1 className='text-[20px] font-bold mb-3'>  Seller Request </h1>
              
-             <div className='w-full p-4 bg-[#6a5fdf] rounded-md'>
+             <div className='w-full p-4 bg-[#648DE5] rounded-md'>
             
              <Search setParPage={setParPage} setSearchValue={setSearchValue} searchValue={searchValue}  /> 
 

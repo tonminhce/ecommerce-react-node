@@ -25,9 +25,9 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
                 className={`fixed duration-200 ${!showSidebar ? 'invisible' : 'visible'} w-screen h-screen bg-[#00000080] top-0 left-0 z-10`}
             />
             <div
-                className={`w-[260px] fixed bg-gradient-to-r from-[#e6e7fb] to-[#d3d6ff] z-50 top-0 h-screen shadow-lg transition-transform ${showSidebar ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}
+                className={`w-[260px] fixed bg-blue-100 z-50 top-0 h-screen shadow-md transition-transform ${showSidebar ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}
             >
-                <div className='h-[70px] flex justify-center items-center bg-[#ffffff] shadow-md'>
+                <div className='h-[70px] flex justify-center items-center bg-transparent'>
                     <Link to='/' className='w-[180px] h-[50px]'>
                         <img
                             className='mb-[10px]'
@@ -42,7 +42,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
                             <li key={i}>
                                 <Link
                                     to={n.path}
-                                    className={`flex items-center gap-4 px-4 py-3 rounded-md transition-colors duration-300 ${pathname === n.path ? 'bg-blue-600 text-white shadow-md' : 'text-gray-800 hover:bg-blue-100'}`}
+                                    className={`flex items-center gap-4 px-4 py-3 rounded-md transition-colors duration-300 ${pathname === n.path ? 'bg-blue-600 text-white shadow-md' : 'text-gray-800 hover:bg-blue-200'}`}
                                 >
                                     <span className='text-xl'>{n.icon}</span>
                                     <span className='font-semibold'>{n.title}</span>

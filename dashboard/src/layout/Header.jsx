@@ -6,7 +6,7 @@ const Header = ({ showSidebar, setShowSidebar }) => {
   const { userInfo } = useSelector(state => state.auth);
 
   return (
-    <div className='fixed top-0 left-0 w-full py-4 px-4 lg:px-8 z-40'>
+    <div className='top-0 left-0 w-full py-4 px-4 lg:px-8 z-40'>
       <div className='ml-0 lg:ml-[260px] rounded-md h-[65px] flex justify-between items-center bg-gradient-to-r from-indigo-400 to-blue-500 px-6 transition-all shadow-lg'>
 
         <div

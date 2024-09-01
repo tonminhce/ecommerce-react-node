@@ -50,7 +50,7 @@ const Profile = () => {
         <div className='px-4 lg:px-8 py-6'>
             <div className='w-full flex flex-wrap'>
                 <div className='w-full md:w-6/12'>
-                    <div className='w-full p-4 bg-blue-100 rounded-md shadow-lg'>
+                    <div className='w-full p-4 bg-[#648DE5] rounded-md shadow-lg'>
                         <div className='flex justify-center items-center py-3'>
                             {
                                 userInfo?.image ? (
@@ -177,7 +177,7 @@ const Profile = () => {
 
                 <div className='w-full md:w-6/12'>
                     <div className='w-full pl-0 md:pl-7 mt-6 md:mt-0'>
-                        <div className='bg-blue-100 rounded-md shadow-lg p-4'>
+                        <div className='bg-[#648DE5] rounded-md shadow-lg p-4'>
                             <h1 className='text-gray-700 text-lg mb-3 font-semibold'>Change Password</h1>
                             <form>
                                 <div className='flex flex-col w-full gap-1 mb-2'>

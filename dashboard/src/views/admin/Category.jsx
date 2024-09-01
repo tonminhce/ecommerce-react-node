@@ -84,7 +84,7 @@ const Category = () => {
     return (
         <div className='px-2 lg:px-7 pt-5'>
 
-        <div className='flex lg:hidden justify-between items-center mb-5 p-4 bg-[#6a5fdf] rounded-md'>
+        <div className='flex lg:hidden justify-between items-center mb-5 p-4 bg-[#648DE5] rounded-md'>
             <h1 className='text-[#d0d2d6] font-semibold text-lg'>Category</h1>
             <button onClick={() => setShow(true)} className='bg-red-500 shadow-lg hover:shadow-red-500/40 px-4 py-2 cursor-pointer text-white rounded-sm text-sm'>Add</button>
 
@@ -95,7 +95,7 @@ const Category = () => {
 
             <div className='flex flex-wrap w-full'>
                 <div className='w-full lg:w-7/12'>
-                <div className='w-full p-4 bg-[#6a5fdf] rounded-md'>
+                <div className='w-full p-4 bg-[#648DE5] rounded-md'>
                 
                <Search setParPage={setParPage} setSearchValue={setSearchValue} searchValue={searchValue}  />
 
@@ -106,7 +106,7 @@ const Category = () => {
             <th scope='col' className='py-3 px-4'>No</th>
             <th scope='col' className='py-3 px-4'>Image</th>
             <th scope='col' className='py-3 px-4'>Name</th>
-            <th scope='col' className='py-3 px-4'>Action</th> 
+            <th scope='col' className='py-3 px-4 flex justify-end'>Action</th> 
         </tr>
         </thead>
 
@@ -120,7 +120,7 @@ const Category = () => {
                 <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>{d.name}</td>
                  
                 <td scope='row' className='py-1 px-4 font-medium whitespace-nowrap'>
-                    <div className='flex justify-start items-center gap-4'>
+                    <div className='flex justify-end items-center gap-4'>
                     <Link className='p-[6px] bg-yellow-500 rounded hover:shadow-lg hover:shadow-yellow-500/50'> <FaEdit/> </Link> 
                     <Link className='p-[6px] bg-red-500 rounded hover:shadow-lg hover:shadow-red-500/50'> <FaTrash/> </Link> 
                     </div>
@@ -152,7 +152,7 @@ const Category = () => {
 
     <div className={`w-[320px] lg:w-5/12 translate-x-100 lg:relative lg:right-0 fixed ${show ? 'right-0' : '-right-[340px]'} z-[9999] top-0 transition-all duration-500 `} >
     <div className='w-full pl-5'>
-        <div className='bg-[#6a5fdf] h-screen lg:h-auto px-3 py-2 lg:rounded-md text-[#d0d2d6]'>
+        <div className='bg-[#648DE5] h-screen lg:h-auto px-3 py-2 lg:rounded-md text-[#d0d2d6]'>
 
             <div className='flex justify-between items-center mb-4' >
             <h1 className='text-[#d0d2d6] font-semibold text-xl mb-4 w-full text-center '>Add Category</h1>

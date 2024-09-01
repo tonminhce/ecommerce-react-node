@@ -14,7 +14,7 @@ const DiscountProducts = () => {
         <div className='px-2 lg:px-7 pt-5'>
             <h1 className='text-[#000000] font-semibold text-lg mb-3'>Discount Products</h1>
 
-         <div className='w-full p-4 bg-[#6a5fdf] rounded-md'> 
+         <div className='w-full p-4 bg-[#648DE5] rounded-md'> 
          <Search setParPage={setParPage} setSearchValue={setSearchValue} searchValue={searchValue} />
 
 
