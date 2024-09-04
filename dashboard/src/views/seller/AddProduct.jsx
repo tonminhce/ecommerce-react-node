@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 const AddProduct = () => {
   const dispatch = useDispatch();
   const { categorys } = useSelector((state) => state.category);
-  const {userInfo } = useSelector((state) => state.auth);
+  const { userInfo } = useSelector((state) => state.auth);
   const { loader, successMessage, errorMessage } = useSelector(
     (state) => state.product
   );
@@ -59,19 +59,14 @@ const AddProduct = () => {
     }
   };
 
-  const [images, setImages] = useState([]);
-  const [imageShow, setImageShow] = useState([]);
+  const [image, setImage] = useState(null);
+  const [imageShow, setImageShow] = useState("");
 
   const imageHandle = (e) => {
-    const files = e.target.files;
-    const length = files.length;
-    if (length > 0) {
-      setImages([...images, ...files]);
-      let imageUrl = [];
-      for (let i = 0; i < length; i++) {
-        imageUrl.push({ url: URL.createObjectURL(files[i]) });
-      }
-      setImageShow([...imageShow, ...imageUrl]);
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
+      setImageShow(URL.createObjectURL(file));
     }
   };
 
@@ -87,8 +82,8 @@ const AddProduct = () => {
         brand: "",
         stock: "",
       });
-      setImageShow([]);
-      setImages([]);
+      setImageShow("");
+      setImage(null);
       setCategory("");
     }
     if (errorMessage) {
@@ -97,24 +92,9 @@ const AddProduct = () => {
     }
   }, [successMessage, errorMessage, dispatch]);
 
-  const changeImage = (img, index) => {
-    if (img) {
-      let tempUrl = imageShow;
-      let tempImages = images;
-
-      tempImages[index] = img;
-      tempUrl[index] = { url: URL.createObjectURL(img) };
-      setImageShow([...tempUrl]);
-      setImages([...tempImages]);
-    }
-  };
-
-  const removeImage = (i) => {
-    const filterImage = images.filter((img, index) => index !== i);
-    const filterImageUrl = imageShow.filter((img, index) => index !== i);
-
-    setImages(filterImage);
-    setImageShow(filterImageUrl);
+  const removeImage = () => {
+    setImage(null);
+    setImageShow("");
   };
 
   const add = (e) => {
@@ -128,11 +108,9 @@ const AddProduct = () => {
     formData.append("brand", state.brand);
     formData.append("shopName", userInfo.name);
     formData.append("category", category);
-
-    for (let i = 0; i < images.length; i++) {
-      formData.append("images", images[i]);
+    if (image) {
+      formData.append("images", image);
     }
-    console.log(formData);
     dispatch(add_product(formData));
   };
 
@@ -292,49 +270,53 @@ const AddProduct = () => {
           </div>
 
           <div className="flex flex-col w-full gap-2 mb-5">
-            <label className="text-lg text-white">Product Images</label>
-            <div className="flex items-center flex-wrap gap-4">
-              {imageShow.map((img, i) => (
-                <div
-                  key={i}
-                  className="relative w-20 h-20 border border-slate-700 rounded-md overflow-hidden"
-                >
+            <label className="text-lg text-white">Product Image</label>
+            <div className="flex items-center gap-4">
+              {imageShow && (
+                <div className="relative w-20 h-20 border border-slate-700 rounded-md overflow-hidden">
                   <img
+                    src={imageShow}
                     className="w-full h-full object-cover"
-                    src={img.url}
-                    alt="product"
+                    alt="Product Preview"
                   />
-                  <span
-                    onClick={() => removeImage(i)}
-                    className="absolute top-0 right-0 m-1 text-white cursor-pointer hover:text-red-600"
+                  <button
+                    type="button"
+                    onClick={removeImage}
+                    className="absolute top-0 right-0 text-white bg-red-600 rounded-full"
                   >
-                    <IoMdCloseCircle />
-                  </span>
+                    <IoMdCloseCircle size={20} />
+                  </button>
                 </div>
-              ))}
-              <div className="relative w-20 h-20 border-2 border-dashed border-slate-500 flex items-center justify-center rounded-md cursor-pointer hover:border-indigo-700">
-                <input
-                  onChange={imageHandle}
-                  className="absolute inset-0 opacity-0 cursor-pointer"
-                  type="file"
-                  id="image"
-                  multiple
-                />
-                <IoMdImages className="text-2xl text-slate-500" />
-              </div>
+              )}
+              {!imageShow && (
+                <label
+                  htmlFor="image"
+                  className="cursor-pointer flex items-center justify-center w-20 h-20 border-2 border-dashed border-slate-700 rounded-md text-gray-300 hover:border-indigo-700"
+                >
+                  <IoMdImages size={30} />
+                  <input
+                    type="file"
+                    className="hidden"
+                    onChange={imageHandle}
+                    accept="image/*"
+                    id="image"
+                  />
+                </label>
+              )}
             </div>
           </div>
 
-          <div className="w-full">
+          <div className="flex justify-start">
             <button
               disabled={loader === true}
-              className="w-full bg-[#304C89] text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-300"
+              type="submit"
+              className="bg-[#304C89] text-white px-6 py-2 rounded-md hover:bg-blue-600"
             >
               {loader ? (
                 <PropagateLoader
+                  color="#fff"
                   cssOverride={overrideStyle}
                   size={10}
-                  color="#fff"
                 />
               ) : (
                 "Add Product"

@@ -6,8 +6,9 @@ export const add_product = createAsyncThunk(
     async(product,{rejectWithValue, fulfillWithValue}) => {
         
         try { 
+            console.log("product", product)
             const {data} = await api.post('/product-add',product,{withCredentials: true}) 
-            // console.log(data)
+            console.log("data", data)
             return fulfillWithValue(data)
         } catch (error) {
             // console.log(error.response.data)
@@ -134,7 +135,6 @@ export const productReducer = createSlice({
             state.successMessage = payload.message 
              
         })
-
         .addCase(get_products.fulfilled, (state, { payload }) => {
             state.totalProduct = payload.totalProduct;
             state.products = payload.products;
@@ -143,7 +143,6 @@ export const productReducer = createSlice({
         .addCase(get_product.fulfilled, (state, { payload }) => {
             state.product = payload.product;  
         })
-
         .addCase(update_product.pending, (state, { payload }) => {
             state.loader = true;
         })
@@ -157,13 +156,10 @@ export const productReducer = createSlice({
             state.successMessage = payload.message 
              
         })
-
         .addCase(product_image_update.fulfilled, (state, { payload }) => { 
             state.product = payload.product 
             state.successMessage = payload.message  
         })
- 
-
     }
 
 })
