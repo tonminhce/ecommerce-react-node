@@ -7,7 +7,7 @@ export const customer_register = createAsyncThunk(
     async(info, { rejectWithValue,fulfillWithValue }) => {
         try {
             const {data} = await api.post('/customer/customer-register',info)
-            localStorage.setItem('customerToken',data.token)
+            localStorage.setItem('accessToken',data.token)
            // console.log(data)
             return fulfillWithValue(data)
         } catch (error) {
@@ -22,7 +22,7 @@ export const customer_login = createAsyncThunk(
     async(info, { rejectWithValue,fulfillWithValue }) => {
         try {
             const {data} = await api.post('/customer/customer-login',info)
-            localStorage.setItem('customerToken',data.token)
+            localStorage.setItem('accessToken',data.token)
            // console.log(data) 
             return fulfillWithValue(data)
         } catch (error) {
@@ -48,7 +48,7 @@ export const authReducer = createSlice({
     name: 'auth',
     initialState:{
         loader : false,
-        userInfo : decodeToken(localStorage.getItem('customerToken')),
+        userInfo : decodeToken(localStorage.getItem('accessToken')),
         errorMessage : '',
         successMessage: '', 
     },

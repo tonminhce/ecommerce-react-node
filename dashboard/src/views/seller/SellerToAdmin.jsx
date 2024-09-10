@@ -63,7 +63,7 @@ const SellerToAdmin = () => {
 
   return (
     <div className="px-2 lg:px-7 py-5">
-      <div className="w-full bg-[#2c3e50] px-4 py-4 rounded-md h-[calc(100vh-140px)]">
+      <div className="w-full border-2 border-gray-300 bg-[#f0f4f7] px-4 py-4 rounded-md h-[calc(100vh-140px)]">
         <div className="flex w-full h-full relative">
           <div className="w-full md:pl-4">
             <div className="flex justify-between items-center">
@@ -76,14 +76,14 @@ const SellerToAdmin = () => {
                   />
                   <div className="w-[10px] h-[10px] bg-green-500 rounded-full absolute right-0 bottom-0"></div>
                 </div>
-                <h2 className="text-base text-white font-semibold">
+                <h2 className="text-base text-gray-800 font-semibold">
                   Admin Support
                 </h2>
               </div>
             </div>
 
             <div className="py-4">
-              <div className="bg-[#34495e] h-[calc(100vh-290px)] rounded-md p-3 overflow-y-auto">
+              <div className="bg-[#d9e3ea] h-[calc(100vh-290px)] rounded-md p-3 overflow-y-auto">
                 {seller_admin_message.map((m, i) => {
                   if (userInfo._id === m.senderId) {
                     return (
@@ -93,7 +93,7 @@ const SellerToAdmin = () => {
                         className="w-full flex justify-end items-center"
                       >
                         <div className="flex justify-start items-start gap-2 md:px-3 py-2 max-w-full lg:max-w-[85%]">
-                          <div className="flex justify-center items-start flex-col w-full bg-[#e74c3c] shadow-lg shadow-red-500/50 text-white py-1 px-2 rounded-sm">
+                          <div className="flex justify-center items-start flex-col w-full bg-[#e67d73] shadow-lg shadow-red-500/50 text-white py-1 px-2 rounded-sm">
                             <span>{m.message}</span>
                           </div>
                           <div>
@@ -136,7 +136,7 @@ const SellerToAdmin = () => {
               <input
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                className="w-full flex justify-between px-2 border border-slate-700 items-center py-[5px] focus:border-[#2980b9] rounded-md outline-none bg-transparent text-[#ecf0f1]"
+                className="w-full flex justify-between px-2 border border-slate-700 items-center py-[5px] focus:border-[#2980b9] rounded-md outline-none bg-transparent text-gray-800"
                 type="text"
                 placeholder="Input Your Message"
               />

@@ -29,12 +29,12 @@ const Details = () => {
   const navigate = useNavigate();
   const { slug } = useParams();
   const dispatch = useDispatch();
-  const {home} = useSelector(state => state);
+  const { home } = useSelector((state) => state);
   console.log(home);
   const { product, relatedProducts, moreProducts, totalReview } = useSelector(
     (state) => state.home
   );
-  console.log("product save", product);
+  console.log(relatedProducts);
   const { userInfo } = useSelector((state) => state.auth);
   const { errorMessage, successMessage } = useSelector((state) => state.card);
 
@@ -53,10 +53,7 @@ const Details = () => {
     }
   }, [successMessage, errorMessage]);
 
-  const images = [1, 2, 3, 4, 5, 6];
   const [image, setImage] = useState("");
-  const discount = 10;
-  const stock = 3;
   const [state, setState] = useState("reviews");
 
   const responsive = {
@@ -296,9 +293,9 @@ const Details = () => {
                     <div>
                       <button
                         onClick={add_card}
-                        className="px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-green-500/40 bg-[#059473] text-white"
+                        className="px-8 py-3 rounded-md h-[50px] cursor-pointer hover:shadow-lg hover:shadow-green-500/40 bg-[#059473] text-white"
                       >
-                        Add To Card
+                        Add To Cart
                       </button>
                     </div>
                   </>
@@ -309,7 +306,7 @@ const Details = () => {
                 <div>
                   <div
                     onClick={add_wishlist}
-                    className="h-[50px] w-[50px] flex justify-center items-center cursor-pointer hover:shadow-lg hover:shadow-cyan-500/40 bg-cyan-500 text-white"
+                    className="h-[50px] w-[50px] rounded-md flex justify-center items-center cursor-pointer hover:shadow-lg hover:shadow-cyan-500/40 bg-cyan-500 text-white"
                   >
                     <FaHeart />
                   </div>
@@ -375,7 +372,7 @@ const Details = () => {
                 {product.stock ? (
                   <button
                     onClick={buynow}
-                    className="px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-green-500/40 bg-[#247462] text-white"
+                    className="px-8 py-3 h-[50px] rounded-md cursor-pointer hover:shadow-lg hover:shadow-green-500/40 bg-[#247462] text-white"
                   >
                     Buy Now
                   </button>
@@ -384,7 +381,7 @@ const Details = () => {
                 )}
                 <Link
                   to={`/dashboard/chat/${product.sellerId}`}
-                  className="px-8 py-3 h-[50px] cursor-pointer hover:shadow-lg hover:shadow-red-500/40 bg-red-500 text-white"
+                  className="px-8 py-3 h-[50px] rounded-md cursor-pointer hover:shadow-lg hover:shadow-red-500/40 bg-red-500 text-white"
                 >
                   Chat Seller
                 </Link>
@@ -441,7 +438,7 @@ const Details = () => {
                 <div className="flex flex-col gap-5 mt-3 border p-3">
                   {moreProducts.map((p, i) => {
                     return (
-                      <Link className="block">
+                      <Link className="block" to={`/product/details/${p.slug}`}>
                         <div className="relative h-[270px]">
                           <img
                             className="w-full h-full"
@@ -502,7 +499,7 @@ const Details = () => {
               {relatedProducts.map((p, i) => {
                 return (
                   <SwiperSlide key={i}>
-                    <Link className="block">
+                    <Link className="block" to={`/product/details/${p.slug}`}>
                       <div className="relative h-[270px]">
                         <div className="w-full h-full">
                           <img

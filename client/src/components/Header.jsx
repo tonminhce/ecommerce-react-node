@@ -115,7 +115,7 @@ const Header = () => {
                 <div className="flex justify-between md-lg:justify-center items-center flex-wrap pl-8">
                   <ul className="flex justify-start items-start gap-8 text-sm font-bold uppercase md-lg:hidden">
                     <li>
-                      <Link
+                      <Link to='/'
                         className={`p-2 block ${
                           pathname === "/" ? "text-[#059473]" : "text-slate-600"
                         } `}
@@ -138,6 +138,7 @@ const Header = () => {
                     </li>
                     <li>
                       <Link
+                        to ="/dashboard"
                         className={`p-2 block ${
                           pathname === "/dashboard"
                             ? "text-[#059473]"
@@ -439,7 +440,7 @@ const Header = () => {
                       type="text"
                       name=""
                       id=""
-                      placeholder="What do you need"
+                      placeholder="Search in TommyShop"
                     />
                     <button
                       onClick={search}
@@ -459,7 +460,7 @@ const Header = () => {
                     </div>
                     <div className="flex justify-end flex-col gap-1">
                       <h2 className="text-md font-medium text-slate-700">
-                        +1343-43233455
+                        +6969-69696969
                       </h2>
                       <span className="text-sm">Support 24/7</span>
                     </div>
