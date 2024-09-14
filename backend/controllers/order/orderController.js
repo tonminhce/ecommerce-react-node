@@ -4,7 +4,7 @@ const customerOrder = require('../../models/customerOrder')
 const myShopWallet = require('../../models/myShopWallet')
 const sellerWallet = require('../../models/sellerWallet')
 
-const cardModel = require('../../models/cardModel')
+const cartModel = require('../../models/cartModel')
 const moment = require("moment")
 const { responseReturn } = require('../../utiles/response') 
 const { mongo: {ObjectId}} = require('mongoose')
@@ -36,7 +36,7 @@ class orderController{
     place_order = async (req,res) => {
         const {price,products,shipping_fee,shippingInfo,userId } = req.body
         let authorOrderData = []
-        let cardId = []
+        let cartId = []
         const tempDate = moment(Date.now()).format('LLL')
 
         let customerOrderProduct = []
@@ -48,7 +48,7 @@ class orderController{
                 tempCusPro.quantity = pro[j].quantity
                 customerOrderProduct.push(tempCusPro)
                 if (pro[j]._id) {
-                    cardId.push(pro[j]._id)
+                    cartId.push(pro[j]._id)
                 } 
             } 
         }
@@ -86,8 +86,8 @@ class orderController{
             }
 
             await authOrderModel.insertMany(authorOrderData)
-            for (let k = 0; k < cardId.length; k++) {
-                await cardModel.findByIdAndDelete(cardId[k]) 
+            for (let k = 0; k < cartId.length; k++) {
+                await cartModel.findByIdAndDelete(cartId[k]) 
             }
    
             setTimeout(() => {
